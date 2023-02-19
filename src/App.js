@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import "./App.css";
+import FilmsPage from "./modules/films/pages/FilmsPage";
+import PeopleListPage from "./modules/people/pages/PeopleListPage";
+import StarshipsPage from "./modules/starships/pages/StarshipsPage";
+import VehiclesPage from "./modules/vehicles/pages/VehiclesPage";
+import SpeciesPage from "./modules/species/pages/SpeciesPage";
+import PlanetsPage from "./modules/planets/pages/PlanetsPage";
+import HomePage from "./modules/common/pages/HomePage";
+import NotFoundPage from "./modules/common/pages/NotFoundPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+
+        <Route path="/people" element={<PeopleListPage />} />
+        <Route path="/films" element={<FilmsPage />} />
+        <Route path="/starships" element={<StarshipsPage />} />
+        <Route path="/vehicles" element={<VehiclesPage />} />
+        <Route path="/species" element={<SpeciesPage />} />
+        <Route path="/planets" element={<PlanetsPage />} />
+
+        <Route path="*" element={<Navigate to="/notfound" replace />} />
+        <Route path="/notfound" element={<NotFoundPage />} />
+      </Routes>
+    </Router>
   );
 }
 
