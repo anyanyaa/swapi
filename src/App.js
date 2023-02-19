@@ -13,6 +13,8 @@ import SpeciesPage from "./modules/species/pages/SpeciesPage";
 import PlanetsPage from "./modules/planets/pages/PlanetsPage";
 import HomePage from "./modules/common/pages/HomePage";
 import NotFoundPage from "./modules/common/pages/NotFoundPage";
+import PeopleDetailsPage from "./modules/people/pages/PeopleDetailsPage";
+import PeopleModule from "./modules/people/PeopleModule";
 
 function App() {
   return (
@@ -20,7 +22,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        <Route path="/people" element={<PeopleListPage />} />
+        <Route path="/people/*" element={<PeopleModule />} />
+
         <Route path="/films" element={<FilmsPage />} />
         <Route path="/starships" element={<StarshipsPage />} />
         <Route path="/vehicles" element={<VehiclesPage />} />
