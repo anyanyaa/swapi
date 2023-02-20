@@ -3,7 +3,6 @@ import React from "react";
 
 export const getPeopleList = () => {
   return api.get("people").then((response) => {
-    console.log("fetchpeople");
     return response.data.results;
   });
 };

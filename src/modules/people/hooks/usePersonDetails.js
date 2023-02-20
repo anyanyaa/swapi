@@ -6,8 +6,6 @@ export const usePersonDetails = (id) => {
 
   const [loading, setLoading] = useState(false);
 
-  console.log(details);
-
   useEffect(() => {
     window.sessionStorage.setItem("details", JSON.stringify(details));
   }, [details]);

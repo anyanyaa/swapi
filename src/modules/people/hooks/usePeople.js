@@ -17,7 +17,6 @@ export const usePeople = () => {
   }, [list]);
 
   function fetchPeople() {
-    console.log("onemore");
     getPeopleList()
       .then(setList)
       .then(() => {
