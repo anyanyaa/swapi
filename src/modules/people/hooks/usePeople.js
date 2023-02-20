@@ -6,6 +6,8 @@ export const usePeople = () => {
     sessionStorage.list ? JSON.parse(sessionStorage.list) : []
   );
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     fetchPeople();
   }, []);
@@ -15,8 +17,13 @@ export const usePeople = () => {
   }, [list]);
 
   function fetchPeople() {
-    getPeopleList().then(setList);
+    console.log("onemore");
+    getPeopleList()
+      .then(setList)
+      .then(() => {
+        setLoading(true);
+      });
   }
 
-  return { list, fetchPeople };
+  return { list, loading, fetchPeople };
 };

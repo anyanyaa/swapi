@@ -5,8 +5,6 @@ import { useLocation } from "react-router";
 function PeopleList({ list }) {
   const { pathname } = useLocation();
 
-  console.log(pathname);
-
   return (
     <ul>
       {list.map((person, i = 0) => {
