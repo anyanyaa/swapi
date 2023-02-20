@@ -26,10 +26,10 @@ export function CircularIndeterminate() {
   );
 }
 
-export function LinearIndeterminate(progress) {
+export function LinearIndeterminate() {
   return (
     <Box sx={{ width: "100%" }}>
-      <LinearProgress variant="determinate" value={progress} />
+      <LinearProgress />
     </Box>
   );
 }

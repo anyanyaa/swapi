@@ -3,8 +3,7 @@ import { usePersonDetails } from "../hooks/usePersonDetails";
 import { useParams } from "react-router";
 import { useCustomNavigate } from "../../common/hooks/useCustomNavigate";
 import { Button } from "@mui/material";
-import { useState } from "react";
-import { CircularIndeterminate } from "../../../App";
+import { CircularIndeterminate, LinearIndeterminate } from "../../../App";
 
 function PeopleDetailsPage() {
   const { id } = useParams();
@@ -16,27 +15,27 @@ function PeopleDetailsPage() {
     navigate.goBack();
   };
 
-  return (
-    <div>
-      {loading === false ? (
-        CircularIndeterminate()
-      ) : (
-        <>
-          <h2> Person Details Page</h2>
-          <div className="details">Name: {details.name}</div>
-          <Button
-            sx={{
-              width: 150,
-            }}
-            variant="contained"
-            onClick={onBackButtonClick}
-          >
-            Back
-          </Button>
-        </>
-      )}
-    </div>
-  );
+  if (loading === true) {
+    return (
+      <>
+        <h2> Person Details Page</h2>
+        <div className="details">Name: {details.name}</div>
+        <Button
+          sx={{
+            width: 150,
+          }}
+          variant="contained"
+          onClick={onBackButtonClick}
+        >
+          Back
+        </Button>
+      </>
+    );
+  } else if (loading === false && !sessionStorage.details) {
+    return CircularIndeterminate();
+  } else if (sessionStorage.details) {
+    return LinearIndeterminate();
+  }
 }
 
 export default PeopleDetailsPage;
