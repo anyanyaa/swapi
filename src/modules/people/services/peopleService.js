@@ -1,5 +1,4 @@
 import api from "../../../api";
-import React from "react";
 
 export const getPeopleList = () => {
   return api.get("people").then((response) => {
@@ -7,7 +6,7 @@ export const getPeopleList = () => {
   });
 };
 
-export const getPersonDetails = (id) => {
+export const getPersonDetails = (id, setError) => {
   return api
     .get(`people/${id}`)
     .then((response) => {
@@ -15,9 +14,9 @@ export const getPersonDetails = (id) => {
     })
     .catch((err) => {
       if (err) {
-        console.log("404 error");
-        console.log(document.location);
-        return;
+        console.log(err.message);
+        setError(true);
+        return err;
       }
     });
 };

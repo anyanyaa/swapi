@@ -7,11 +7,11 @@ function PeopleList({ list }) {
 
   return (
     <ul>
-      {list.map((person, i = 0) => {
-        i++;
+      {list.map((person, index = 0) => {
+        index++;
         return (
           <li key={crypto.randomUUID()}>
-            <Link to={`${pathname}/${i}`}>{person.name}</Link>
+            <Link to={`${pathname}/${index}`}>{person.name}</Link>
           </li>
         );
       })}

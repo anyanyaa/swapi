@@ -12,7 +12,7 @@ function PeopleDetailsPage() {
   const navigate = useCustomNavigate();
 
   const onBackButtonClick = () => {
-    navigate.goBack();
+    navigate.navigateToPage("/people");
   };
 
   if (loading === true) {
