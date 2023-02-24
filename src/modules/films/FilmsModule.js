@@ -4,7 +4,7 @@ import { Navigate, Route } from "react-router-dom";
 import FilmsListPage from "./pages/FilmsListPage";
 import FilmsDetailsPage from "./pages/FilmsDetailsPage";
 
-function PeopleModule() {
+function FilmsModule() {
   return (
     <div>
       <Routes>
@@ -15,4 +15,4 @@ function PeopleModule() {
     </div>
   );
 }
-export default PeopleModule;
+export default FilmsModule;

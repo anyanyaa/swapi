@@ -5,7 +5,6 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./App.css";
-import FilmsListPage from "./modules/films/pages/FilmsListPage";
 import StarshipsPage from "./modules/starships/pages/StarshipsPage";
 import VehiclesPage from "./modules/vehicles/pages/VehiclesPage";
 import SpeciesPage from "./modules/species/pages/SpeciesPage";
@@ -15,7 +14,6 @@ import NotFoundPage from "./modules/common/pages/NotFoundPage";
 import PeopleModule from "./modules/people/PeopleModule";
 
 import { Box, CircularProgress, LinearProgress } from "@mui/material";
-import { useState } from "react";
 import FilmsModule from "./modules/films/FilmsModule";
 
 export function CircularIndeterminate() {
