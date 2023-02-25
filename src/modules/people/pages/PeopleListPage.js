@@ -14,7 +14,7 @@ function PeopleListPage({ route }) {
     navigate.navigateToPage();
   };
 
-  if (loading === true) {
+  if (loading) {
     return (
       <>
         <h2>People List Page</h2>
@@ -30,9 +30,9 @@ function PeopleListPage({ route }) {
         </Button>
       </>
     );
-  } else if (loading === false && !sessionStorage.list) {
+  } else if (!loading && !sessionStorage[route]) {
     return CircularIndeterminate();
-  } else if (sessionStorage.list) {
+  } else if (!loading && sessionStorage[route]) {
     return LinearIndeterminate();
   }
 }

@@ -30,11 +30,9 @@ function FilmsListPage({ route }) {
         </Button>
       </>
     );
-  } else if (loading === false && !sessionStorage.list) {
-    console.log("no in storage");
+  } else if (loading === false && !sessionStorage[route]) {
     return CircularIndeterminate();
-  } else if (sessionStorage.list) {
-    console.log("in storage");
+  } else if (loading === false && sessionStorage[route]) {
     return LinearIndeterminate();
   }
 }

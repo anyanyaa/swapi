@@ -14,7 +14,7 @@ function VehiclesListPage({ route }) {
     navigate.navigateToPage();
   };
 
-  if (loading === true) {
+  if (loading) {
     return (
       <>
         <h2>Vehicles List Page</h2>
@@ -30,9 +30,9 @@ function VehiclesListPage({ route }) {
         </Button>
       </>
     );
-  } else if (loading === false && !sessionStorage.list) {
+  } else if (!loading && !sessionStorage[route]) {
     return CircularIndeterminate();
-  } else if (sessionStorage.list) {
+  } else if (!loading && sessionStorage[route]) {
     return LinearIndeterminate();
   }
 }

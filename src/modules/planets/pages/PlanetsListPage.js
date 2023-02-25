@@ -3,7 +3,7 @@ import { useElementsList } from "../../useElementsList";
 import { useCustomNavigate } from "../../common/hooks/useCustomNavigate";
 import { Button } from "@mui/material";
 import { CircularIndeterminate, LinearIndeterminate } from "../../../App";
-import PlanetsList from "./components/PlanetsList";
+import PlanetsList from "../components/PlanetsList";
 
 function PlanetsListPage({ route }) {
   const { list, loading } = useElementsList(route);
@@ -14,7 +14,7 @@ function PlanetsListPage({ route }) {
     navigate.navigateToPage();
   };
 
-  if (loading === true) {
+  if (loading) {
     return (
       <>
         <h2>Films List Page</h2>
@@ -30,9 +30,9 @@ function PlanetsListPage({ route }) {
         </Button>
       </>
     );
-  } else if (loading === false && !sessionStorage.list) {
+  } else if (!loading && !sessionStorage[route]) {
     return CircularIndeterminate();
-  } else if (sessionStorage.list) {
+  } else if (!loading && sessionStorage[route]) {
     return LinearIndeterminate();
   }
 }

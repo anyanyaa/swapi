@@ -4,7 +4,9 @@ import { getElementDetails } from "./getList";
 
 export const useDetails = (id, route) => {
   const [details, setDetails] = useState(
-    sessionStorage.details ? JSON.parse(sessionStorage.details) : []
+    sessionStorage[`${route}${id}`]
+      ? JSON.parse(sessionStorage[`${route}${id}`])
+      : []
   );
 
   const [loading, setLoading] = useState(false);
@@ -19,7 +21,7 @@ export const useDetails = (id, route) => {
   }, [error]);
 
   useEffect(() => {
-    window.sessionStorage.setItem("details", JSON.stringify(details));
+    window.sessionStorage.setItem(`${route}${id}`, JSON.stringify(details));
   }, [details]);
 
   useEffect(() => {

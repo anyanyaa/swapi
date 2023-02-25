@@ -15,7 +15,7 @@ function StarshipsListPage({ route }) {
     navigate.navigateToPage();
   };
 
-  if (loading === true) {
+  if (loading) {
     return (
       <>
         <h2>Starships List Page</h2>
@@ -31,9 +31,9 @@ function StarshipsListPage({ route }) {
         </Button>
       </>
     );
-  } else if (loading === false && !sessionStorage.list) {
+  } else if (!loading && !sessionStorage[route]) {
     return CircularIndeterminate();
-  } else if (sessionStorage.list) {
+  } else if (!loading && sessionStorage[route]) {
     return LinearIndeterminate();
   }
 }

@@ -15,7 +15,7 @@ function PeopleDetailsPage({ route }) {
     navigate.navigateToPage(`/${route}`);
   };
 
-  if (loading === true) {
+  if (loading) {
     return (
       <>
         <h2> Person Details Page</h2>
@@ -31,9 +31,9 @@ function PeopleDetailsPage({ route }) {
         </Button>
       </>
     );
-  } else if (loading === false && !sessionStorage.details) {
+  } else if (!loading && !sessionStorage[`${route}${id}`]) {
     return CircularIndeterminate();
-  } else if (sessionStorage.details) {
+  } else if (!loading && sessionStorage[`${route}${id}`]) {
     return LinearIndeterminate();
   }
 }

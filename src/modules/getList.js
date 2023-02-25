@@ -2,7 +2,6 @@ import api from "../api";
 
 export const getList = (route) => {
   return api.get(`${route}`).then((response) => {
-    console.log(response.data);
     return response.data.results;
   });
 };

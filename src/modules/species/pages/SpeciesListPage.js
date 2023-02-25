@@ -15,7 +15,7 @@ function SpeciesListPage({ route }) {
     navigate.navigateToPage();
   };
 
-  if (loading === true) {
+  if (loading) {
     return (
       <>
         <h2>Species List Page</h2>
@@ -31,9 +31,9 @@ function SpeciesListPage({ route }) {
         </Button>
       </>
     );
-  } else if (loading === false && !sessionStorage.list) {
+  } else if (!loading && !sessionStorage[route]) {
     return CircularIndeterminate();
-  } else if (sessionStorage.list) {
+  } else if (!loading && sessionStorage[route]) {
     return LinearIndeterminate();
   }
 }
