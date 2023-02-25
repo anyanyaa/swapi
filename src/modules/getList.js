@@ -2,16 +2,15 @@ import api from "../api";
 
 export const getList = (route) => {
   return api.get(`${route}`).then((response) => {
+    console.log(response.data);
     return response.data.results;
   });
 };
 
 export const getElementDetails = (route, id, setError) => {
-  console.log("getelementsdet");
   return api
-    .get(`${route}/${id}`)
+    .get(`${route}/${id}/`)
     .then((response) => {
-      console.log(response.data);
       return response.data;
     })
     .catch((err) => {

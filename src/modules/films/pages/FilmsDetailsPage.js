@@ -5,14 +5,14 @@ import { Button } from "@mui/material";
 import { CircularIndeterminate, LinearIndeterminate } from "../../../App";
 import { useDetails } from "../../useDetails";
 
-function PeopleDetailsPage() {
+function FilmsDetailsPage({ route }) {
   const { id } = useParams();
-  const { details, loading } = useDetails(id);
+  const { details, loading } = useDetails(id, route);
 
   const navigate = useCustomNavigate();
 
   const onBackButtonClick = () => {
-    navigate.navigateToPage("/films");
+    navigate.navigateToPage(`/${route}`);
   };
 
   if (loading === true) {
@@ -38,4 +38,4 @@ function PeopleDetailsPage() {
   }
 }
 
-export default PeopleDetailsPage;
+export default FilmsDetailsPage;

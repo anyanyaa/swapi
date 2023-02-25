@@ -5,16 +5,18 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./App.css";
-import StarshipsPage from "./modules/starships/pages/StarshipsPage";
-import VehiclesPage from "./modules/vehicles/pages/VehiclesPage";
-import SpeciesPage from "./modules/species/pages/SpeciesPage";
-import PlanetsPage from "./modules/planets/pages/PlanetsPage";
+import StarshipsModule from "./modules/starships/StarshipsModule";
+import VehiclesModule from "./modules/vehicles/VehiclesModule";
+import SpeciesModule from "./modules/species/SpeciesModule";
+import PlanetsModule from "./modules/planets/PlanetsModule";
 import HomePage from "./modules/common/pages/HomePage";
 import NotFoundPage from "./modules/common/pages/NotFoundPage";
 import PeopleModule from "./modules/people/PeopleModule";
 
 import { Box, CircularProgress, LinearProgress } from "@mui/material";
 import FilmsModule from "./modules/films/FilmsModule";
+import { useElementsList } from "./modules/useElementsList";
+import { useCustomNavigate } from "./modules/common/hooks/useCustomNavigate";
 
 export function CircularIndeterminate() {
   return (
@@ -34,21 +36,43 @@ export function LinearIndeterminate() {
   );
 }
 
+const allPath = {
+  people: "people",
+  films: "films",
+  starships: "starships",
+  vehicles: "vehicles",
+  species: "species",
+  planets: "planets",
+};
+
 function App() {
+  const { people, films, starships, vehicles, species, planets } = allPath;
+
   return (
     <div className="main">
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
 
-          <Route path="/people/*" element={<PeopleModule />} />
+          <Route path="/people/*" element={<PeopleModule route={people} />} />
 
-          <Route path="/films/*" element={<FilmsModule />} />
-
-          <Route path="/starships" element={<StarshipsPage />} />
-          <Route path="/vehicles" element={<VehiclesPage />} />
-          <Route path="/species" element={<SpeciesPage />} />
-          <Route path="/planets" element={<PlanetsPage />} />
+          <Route path="/films/*" element={<FilmsModule route={films} />} />
+          <Route
+            path="/starships/*"
+            element={<StarshipsModule route={starships} />}
+          />
+          <Route
+            path="/vehicles/*"
+            element={<VehiclesModule route={vehicles} />}
+          />
+          <Route
+            path="/species/*"
+            element={<SpeciesModule route={species} />}
+          />
+          <Route
+            path="/planets/*"
+            element={<PlanetsModule route={planets} />}
+          />
 
           <Route path="*" element={<Navigate to="/notfound" replace />} />
           <Route path="/notfound" element={<NotFoundPage />} />

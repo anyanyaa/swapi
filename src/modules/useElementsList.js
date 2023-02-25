@@ -5,7 +5,6 @@ export const useElementsList = (route) => {
   const [list, setList] = useState(
     sessionStorage.list ? JSON.parse(sessionStorage.list) : []
   );
-
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -13,7 +12,7 @@ export const useElementsList = (route) => {
   }, []);
 
   useEffect(() => {
-    window.sessionStorage.setItem(route, JSON.stringify(list));
+    window.sessionStorage.setItem("list", JSON.stringify(list));
   }, [list]);
 
   function fetchElements() {

@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useCustomNavigate } from "./common/hooks/useCustomNavigate";
 import { getElementDetails } from "./getList";
 
-export const useDetails = (id) => {
-  const [details, setDetails] = useState({});
+export const useDetails = (id, route) => {
+  const [details, setDetails] = useState(
+    sessionStorage.details ? JSON.parse(sessionStorage.details) : []
+  );
 
   const [loading, setLoading] = useState(false);
-
   const [error, setError] = useState(false);
 
   const navigate = useCustomNavigate();
@@ -26,7 +27,7 @@ export const useDetails = (id) => {
   }, [id]);
 
   function fetchElement() {
-    getElementDetails("films", id, setError)
+    getElementDetails(route, id, setError)
       .then(setDetails)
       .then(() => {
         setLoading(true);

@@ -5,8 +5,8 @@ import { Button } from "@mui/material";
 import { CircularIndeterminate, LinearIndeterminate } from "../../../App";
 import FilmsList from "../components/FilmsList";
 
-function FilmsListPage() {
-  const { list, loading } = useElementsList("films");
+function FilmsListPage({ route }) {
+  const { list, loading } = useElementsList(route);
 
   const navigate = useCustomNavigate();
 
@@ -30,9 +30,11 @@ function FilmsListPage() {
         </Button>
       </>
     );
-  } else if (loading === false && !sessionStorage.route) {
+  } else if (loading === false && !sessionStorage.list) {
+    console.log("no in storage");
     return CircularIndeterminate();
   } else if (sessionStorage.list) {
+    console.log("in storage");
     return LinearIndeterminate();
   }
 }

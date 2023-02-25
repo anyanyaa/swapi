@@ -1,12 +1,12 @@
 import React from "react";
-import { usePeople } from "../hooks/usePeople";
 import PeopleList from "../components/PeopleList";
 import { useCustomNavigate } from "../../common/hooks/useCustomNavigate";
 import { Button } from "@mui/material";
 import { CircularIndeterminate, LinearIndeterminate } from "../../../App";
+import { useElementsList } from "../../useElementsList";
 
-function PeopleListPage() {
-  const { list, loading } = usePeople();
+function PeopleListPage({ route }) {
+  const { list, loading } = useElementsList(route);
 
   const navigate = useCustomNavigate();
 

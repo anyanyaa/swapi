@@ -1,25 +1,24 @@
 import React from "react";
-import { useParams } from "react-router";
+import { useElementsList } from "../../useElementsList";
 import { useCustomNavigate } from "../../common/hooks/useCustomNavigate";
 import { Button } from "@mui/material";
 import { CircularIndeterminate, LinearIndeterminate } from "../../../App";
-import { useDetails } from "../../useDetails";
+import PlanetsList from "./components/PlanetsList";
 
-function PeopleDetailsPage({ route }) {
-  const { id } = useParams();
-  const { details, loading } = useDetails(id, route);
+function PlanetsListPage({ route }) {
+  const { list, loading } = useElementsList(route);
 
   const navigate = useCustomNavigate();
 
   const onBackButtonClick = () => {
-    navigate.navigateToPage(`/${route}`);
+    navigate.navigateToPage();
   };
 
   if (loading === true) {
     return (
       <>
-        <h2> Person Details Page</h2>
-        <div className="details">Name: {details.name}</div>
+        <h2>Films List Page</h2>
+        <PlanetsList list={list} />
         <Button
           sx={{
             width: 150,
@@ -31,11 +30,11 @@ function PeopleDetailsPage({ route }) {
         </Button>
       </>
     );
-  } else if (loading === false && !sessionStorage.details) {
+  } else if (loading === false && !sessionStorage.list) {
     return CircularIndeterminate();
-  } else if (sessionStorage.details) {
+  } else if (sessionStorage.list) {
     return LinearIndeterminate();
   }
 }
 
-export default PeopleDetailsPage;
+export default PlanetsListPage;

@@ -1,11 +1,11 @@
 import React from "react";
 import { useParams } from "react-router";
+import { useDetails } from "../../useDetails";
 import { useCustomNavigate } from "../../common/hooks/useCustomNavigate";
 import { Button } from "@mui/material";
 import { CircularIndeterminate, LinearIndeterminate } from "../../../App";
-import { useDetails } from "../../useDetails";
 
-function PeopleDetailsPage({ route }) {
+function StarshipsDetailsPage({ route }) {
   const { id } = useParams();
   const { details, loading } = useDetails(id, route);
 
@@ -18,7 +18,7 @@ function PeopleDetailsPage({ route }) {
   if (loading === true) {
     return (
       <>
-        <h2> Person Details Page</h2>
+        <h2> Film Details Page</h2>
         <div className="details">Name: {details.name}</div>
         <Button
           sx={{
@@ -38,4 +38,4 @@ function PeopleDetailsPage({ route }) {
   }
 }
 
-export default PeopleDetailsPage;
+export default StarshipsDetailsPage;
