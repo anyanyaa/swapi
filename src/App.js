@@ -12,11 +12,8 @@ import PlanetsModule from "./modules/planets/PlanetsModule";
 import HomePage from "./modules/common/pages/HomePage";
 import NotFoundPage from "./modules/common/pages/NotFoundPage";
 import PeopleModule from "./modules/people/PeopleModule";
-
 import { Box, CircularProgress, LinearProgress } from "@mui/material";
 import FilmsModule from "./modules/films/FilmsModule";
-import { useElementsList } from "./modules/useElementsList";
-import { useCustomNavigate } from "./modules/common/hooks/useCustomNavigate";
 
 export function CircularIndeterminate() {
   return (
