@@ -1,11 +1,12 @@
 import React from "react";
-import PeopleList from "../components/PeopleList";
+import { useElementsList } from "../../useElementsList";
 import { useCustomNavigate } from "../../common/hooks/useCustomNavigate";
+import FilmsList from "../../films/components/FilmsList";
 import { Button } from "@mui/material";
 import { CircularIndeterminate, LinearIndeterminate } from "../../../App";
-import { useElementsList } from "../../useElementsList";
+import StarshipsList from "../components/StarshipsList";
 
-function PeopleListPage({ route }) {
+function StarshipsListPage({ route }) {
   const { list, loading } = useElementsList(route);
 
   const navigate = useCustomNavigate();
@@ -17,8 +18,8 @@ function PeopleListPage({ route }) {
   if (loading) {
     return (
       <>
-        <h2>People List Page</h2>
-        <PeopleList list={list} />
+        <h2>Starships List Page</h2>
+        <StarshipsList list={list} />
         <Button
           sx={{
             width: 150,
@@ -37,4 +38,4 @@ function PeopleListPage({ route }) {
   }
 }
 
-export default PeopleListPage;
+export default StarshipsListPage;

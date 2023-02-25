@@ -1,11 +1,11 @@
 import React from "react";
-import PeopleList from "../components/PeopleList";
+import { useElementsList } from "../../useElementsList";
 import { useCustomNavigate } from "../../common/hooks/useCustomNavigate";
 import { Button } from "@mui/material";
 import { CircularIndeterminate, LinearIndeterminate } from "../../../App";
-import { useElementsList } from "../../useElementsList";
+import VehiclesList from "../components/VehiclesList";
 
-function PeopleListPage({ route }) {
+function VehiclesListPage({ route }) {
   const { list, loading } = useElementsList(route);
 
   const navigate = useCustomNavigate();
@@ -17,8 +17,8 @@ function PeopleListPage({ route }) {
   if (loading) {
     return (
       <>
-        <h2>People List Page</h2>
-        <PeopleList list={list} />
+        <h2>Vehicles List Page</h2>
+        <VehiclesList list={list} />
         <Button
           sx={{
             width: 150,
@@ -37,4 +37,4 @@ function PeopleListPage({ route }) {
   }
 }
 
-export default PeopleListPage;
+export default VehiclesListPage;

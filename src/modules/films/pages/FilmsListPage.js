@@ -1,11 +1,11 @@
 import React from "react";
-import PeopleList from "../components/PeopleList";
+import { useElementsList } from "../../useElementsList";
 import { useCustomNavigate } from "../../common/hooks/useCustomNavigate";
 import { Button } from "@mui/material";
 import { CircularIndeterminate, LinearIndeterminate } from "../../../App";
-import { useElementsList } from "../../useElementsList";
+import FilmsList from "../components/FilmsList";
 
-function PeopleListPage({ route }) {
+function FilmsListPage({ route }) {
   const { list, loading } = useElementsList(route);
 
   const navigate = useCustomNavigate();
@@ -14,11 +14,11 @@ function PeopleListPage({ route }) {
     navigate.navigateToPage();
   };
 
-  if (loading) {
+  if (loading === true) {
     return (
       <>
-        <h2>People List Page</h2>
-        <PeopleList list={list} />
+        <h2>Films List Page</h2>
+        <FilmsList list={list} />
         <Button
           sx={{
             width: 150,
@@ -30,11 +30,11 @@ function PeopleListPage({ route }) {
         </Button>
       </>
     );
-  } else if (!loading && !sessionStorage[route]) {
+  } else if (loading === false && !sessionStorage[route]) {
     return CircularIndeterminate();
-  } else if (!loading && sessionStorage[route]) {
+  } else if (loading === false && sessionStorage[route]) {
     return LinearIndeterminate();
   }
 }
 
-export default PeopleListPage;
+export default FilmsListPage;

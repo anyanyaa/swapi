@@ -1,24 +1,25 @@
 import React from "react";
-import PeopleList from "../components/PeopleList";
+import { useParams } from "react-router";
+import { useDetails } from "../../useDetails";
 import { useCustomNavigate } from "../../common/hooks/useCustomNavigate";
 import { Button } from "@mui/material";
 import { CircularIndeterminate, LinearIndeterminate } from "../../../App";
-import { useElementsList } from "../../useElementsList";
 
-function PeopleListPage({ route }) {
-  const { list, loading } = useElementsList(route);
+function SpeciesDetailsPage({ route }) {
+  const { id } = useParams();
+  const { details, loading } = useDetails(id, route);
 
   const navigate = useCustomNavigate();
 
   const onBackButtonClick = () => {
-    navigate.navigateToPage();
+    navigate.navigateToPage(`/${route}`);
   };
 
   if (loading) {
     return (
       <>
-        <h2>People List Page</h2>
-        <PeopleList list={list} />
+        <h2> Species Details Page</h2>
+        <div className="details">Title: {details.name}</div>
         <Button
           sx={{
             width: 150,
@@ -30,11 +31,11 @@ function PeopleListPage({ route }) {
         </Button>
       </>
     );
-  } else if (!loading && !sessionStorage[route]) {
+  } else if (!loading && !sessionStorage[`${route}${id}`]) {
     return CircularIndeterminate();
-  } else if (!loading && sessionStorage[route]) {
+  } else if (!loading && sessionStorage[`${route}${id}`]) {
     return LinearIndeterminate();
   }
 }
 
-export default PeopleListPage;
+export default SpeciesDetailsPage;
